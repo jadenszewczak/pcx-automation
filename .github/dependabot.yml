@@ -6,7 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "pip" # Python dependency management
-    directory: "/" # Location of package manifests
+    directory: "." # Location of package manifests
     schedule:
       interval: "monthly"
     # Optional: Add commit message prefix
