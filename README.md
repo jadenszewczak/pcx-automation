@@ -48,5 +48,5 @@ pcx-automation/
 ## Development
 
 - Python 3.11+
-- Virtual environment recommended
+- Virtual environment (venv) recommended
 - Follow existing patterns when adding new modules
