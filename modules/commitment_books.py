@@ -76,6 +76,20 @@ class CommitmentBookModule(BaseModule):
         if self.confirm_action("Generate commitment books for all stores?"):
             self.generate_files(stores)
 
+    def generate_from_csv(self):
+        """Generate from CSV file"""
+        print_header("Generate from CSV")
+        print("\nThis feature is coming soon!")
+        print("\nExpected CSV format:")
+        print("store_number,store_name,address,city_state_zip")
+        print("285,Store Name,123 Main St,City ST 12345")
+        print("\nWhen implemented, this will:")
+        print("- Read CSV file from data/imports/")
+        print("- Validate all store data")
+        print("- Generate commitment books for all stores in bulk")
+
+        input("\nPress Enter to continue...")
+
     def collect_store_info(self) -> Dict[str, str]:
         """Collect store information from user"""
         store_info = {}

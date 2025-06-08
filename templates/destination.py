@@ -56,3 +56,14 @@ class DestinationTemplate(BaseTemplate):
         """Get printer name from queue mapping"""
         from config.mappings import VPSX_QUEUES
         return VPSX_QUEUES.get(queue, queue)
+
+    def generate(self, **kwargs) -> str:
+        """Generic generate method - routes to specific generators"""
+        if 'queue' in kwargs:
+            return self.generate_printer(**kwargs)
+        elif 'report' in kwargs and 'job' in kwargs:
+            return self.generate_folder(**kwargs)
+        else:
+            raise ValueError(
+                "Missing required parameters for destination generation"
+            )
