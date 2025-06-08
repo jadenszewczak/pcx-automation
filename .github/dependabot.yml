@@ -5,16 +5,13 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip" # Python dependency management
-    # Use "/" for the root directory, which is the standard for pip
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "pip"
+    # Use "/" to specify the root directory. This is the correct
+    # setting for a requirements.txt file at the top level.
+    directory: "/"
     schedule:
+      # Monthly is a sensible interval for this project.
       interval: "monthly"
-    # Optional: Add commit message prefix
     commit-message:
+      # Add a standard prefix for dependabot commits for clarity.
       prefix: "deps"
-    # Optional: Group all updates together
-    groups:
-      python-dependencies:
-        patterns:
-          - "*"
