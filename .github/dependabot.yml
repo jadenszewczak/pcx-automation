@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      # Check for updates once a month
+      interval: "monthly"
+    # Adds a nice prefix to commit messages for clarity
+    commit-message:
+      prefix: "deps"
