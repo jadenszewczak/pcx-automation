@@ -1,5 +1,6 @@
 """Input validation utilities"""
 
+from typing import List
 from utils.formatters import print_error
 
 
@@ -16,7 +17,7 @@ def validate_store_number(value: str) -> bool:
     return True
 
 
-def validate_choice(value: str, valid_choices: list) -> bool:
+def validate_choice(value: str, valid_choices: List[str]) -> bool:
     """Validate menu choice"""
     if value not in valid_choices:
         print_error(f"Please select from: {', '.join(valid_choices)}")
