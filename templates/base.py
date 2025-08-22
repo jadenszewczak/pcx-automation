@@ -28,6 +28,6 @@ class BaseTemplate(ABC):
         return "\n".join(lines)
 
     @abstractmethod
-    def generate(self, **kwargs) -> str:
+    def generate(self, **kwargs: Any) -> str:
         """Generate template output - must be implemented by subclasses"""
         pass

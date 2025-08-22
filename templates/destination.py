@@ -1,5 +1,6 @@
 """Destination template generation"""
 
+from typing import Any
 from templates.base import BaseTemplate
 
 
@@ -57,12 +58,36 @@ class DestinationTemplate(BaseTemplate):
         from config.mappings import VPSX_QUEUES
         return VPSX_QUEUES.get(queue, queue)
 
-    def generate(self, **kwargs) -> str:
+    def generate(self, **kwargs: Any) -> str:
         """Generic generate method - routes to specific generators"""
         if 'queue' in kwargs:
-            return self.generate_printer(**kwargs)
+            # Extract and cast parameters for printer generation
+            queue = str(kwargs.get('queue', ''))
+            store_number = str(kwargs.get('store_number', ''))
+            store_name = str(kwargs.get('store_name', ''))
+            address = str(kwargs.get('address', ''))
+            city_state_zip = str(kwargs.get('city_state_zip', ''))
+            copy_num = str(kwargs.get('copy_num', '001'))
+
+            return self.generate_printer(
+                queue=queue,
+                store_number=store_number,
+                store_name=store_name,
+                address=address,
+                city_state_zip=city_state_zip,
+                copy_num=copy_num
+            )
         elif 'report' in kwargs and 'job' in kwargs:
-            return self.generate_folder(**kwargs)
+            # Extract and cast parameters for folder generation
+            report = str(kwargs.get('report', ''))
+            job = str(kwargs.get('job', ''))
+            identifier = str(kwargs.get('identifier', ''))
+
+            return self.generate_folder(
+                report=report,
+                job=job,
+                identifier=identifier
+            )
         else:
             raise ValueError(
                 "Missing required parameters for destination generation"
